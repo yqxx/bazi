@@ -178,7 +178,7 @@ const resultHtml = computed(() => {
       </div>
 
       <div class="form-row form-row-actions">
-        <div class="hero-note">结果会在 <b>几秒内</b> 返回；请理性参考、温柔对待自己。</div>
+        <div class="hero-note">结果通常会在 <b>约 1 分钟内</b> 返回；请理性参考、温柔对待自己。</div>
         <van-button class="vant-btn" native-type="submit" type="primary" :loading="loading" :disabled="!canSubmit" round>
           <span class="icon">✶</span>
           <span v-if="!loading">发送给宇宙与命盘</span>
@@ -214,7 +214,7 @@ const resultHtml = computed(() => {
       <van-picker
         title="选择性别"
         :columns="genderColumns"
-        @confirm="(v) => { update({ gender: (v as any).value as Gender }); showGender = false }"
+        @confirm="(e) => { const opt = (e as any)?.selectedOptions?.[0]; if (opt?.value) update({ gender: opt.value as Gender }); showGender = false }"
         @cancel="showGender = false"
       />
     </van-popup>
