@@ -27,8 +27,8 @@ function scrollToSection(id: string) {
       <div class="brand">
         <div class="brand-icon"></div>
         <div>
-          <div class="brand-name">星语云占</div>
-          <div class="brand-sub">温柔·理性·为你点一盏灯</div>
+          <div class="brand-name">温柔八字解读</div>
+          <div class="brand-sub">不吓人·看清自己·慢慢来</div>
         </div>
       </div>
       <button
@@ -50,7 +50,7 @@ function scrollToSection(id: string) {
     >
       <div class="nav-drawer">
         <div class="nav-drawer-header">
-          <span class="brand-name">星语云占</span>
+          <span class="brand-name">温柔八字解读</span>
           <van-icon name="cross" class="nav-drawer-close" @click="showNavPopup = false" />
         </div>
         <nav class="nav-drawer-list">
