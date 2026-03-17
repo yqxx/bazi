@@ -1,5 +1,6 @@
 name: 部署 Vue 项目到 GitHub Pages
-
+env:
+   VITE_DEEPSEEK_API_KEY: ${{ secrets.VITE_DEEPSEEK_API_KEY }}
 on:
   push:
     branches: [ "main" ]
