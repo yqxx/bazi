@@ -20,7 +20,6 @@ const emit = defineEmits<{
   (e: 'submit'): void
 }>()
 
-const showTopic = ref(false)
 const showGender = ref(false)
 const showDate = ref(false)
 const showTime = ref(false)
@@ -28,20 +27,11 @@ const showArea = ref(false)
 
 const areaListData = areaList
 
-const topicOptions = [
-  '感情走向 / 复合可能',
-  '未来 3 个月整体运势',
-  '事业与工作选择',
-  '人际 / 合作关系',
-  '单纯想找人聊聊',
-]
-
 const genderOptions: Array<{ text: string; value: Gender }> = [
   { text: '女性', value: 'female' },
   { text: '男性', value: 'male' },
 ]
 
-const topicColumns = computed(() => topicOptions.map((t) => ({ text: t, value: t })))
 const genderColumns = computed(() => genderOptions.map((g) => ({ text: g.text, value: g.value })))
 
 function update(patch: Partial<BaziFormState>) {
@@ -86,22 +76,9 @@ const resultHtml = computed(() => {
 
 <template>
   <div class="hero-form" id="form">
-    <div class="hero-form-title">简单写下你此刻最在意的一个问题</div>
+    <div class="hero-form-title">填写出生信息，获取你的八字解读</div>
 
     <van-form @submit="() => emit('submit')">
-      <div class="form-row">
-        <div class="form-field">
-          <van-field
-            label="主题"
-            readonly
-            clickable
-            :model-value="modelValue.topic"
-            placeholder="请选择"
-            @click="showTopic = true"
-          />
-        </div>
-      </div>
-
       <div class="form-group form-group-birth">
         <div class="form-row">
           <div class="form-field">
@@ -145,14 +122,6 @@ const resultHtml = computed(() => {
       <div class="form-row">
         <div class="form-field">
           <van-field
-            :model-value="modelValue.name"
-            label="称呼"
-            placeholder="选填"
-            @update:model-value="(v) => update({ name: v })"
-          />
-        </div>
-        <div class="form-field">
-          <van-field
             label="性别"
             readonly
             clickable
@@ -162,19 +131,6 @@ const resultHtml = computed(() => {
             @click="showGender = true"
           />
         </div>
-      </div>
-
-      <div class="form-field">
-        <van-field
-          :model-value="modelValue.question"
-          name="question"
-          label="故事"
-          type="textarea"
-          rows="3"
-          autosize
-          placeholder="选填，例如：是否换工作、感情进展…"
-          @update:model-value="(v) => update({ question: v })"
-        />
       </div>
 
       <div class="form-row form-row-actions">
@@ -198,16 +154,6 @@ const resultHtml = computed(() => {
       </div>
       <div class="result-body" v-html="resultHtml" />
     </div>
-
-    <!-- Topic Picker -->
-    <van-popup v-model:show="showTopic" position="bottom" round>
-      <van-picker
-        title="选择主题"
-        :columns="topicColumns"
-        @confirm="(v) => { update({ topic: (v as any).value ?? (v as any).text }); showTopic = false }"
-        @cancel="showTopic = false"
-      />
-    </van-popup>
 
     <!-- Gender Picker -->
     <van-popup v-model:show="showGender" position="bottom" round>

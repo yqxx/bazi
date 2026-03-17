@@ -318,7 +318,7 @@ function scrollToSection(id: string) {
 
     <footer>
       <div>
-        © 2026 星语云占 · StarWhisper Bazi
+        © 2026 温柔八字解读
         <br />
         本服务不承诺改变命运，仅提供情绪安抚与生活建议，请理性参考。
       </div>

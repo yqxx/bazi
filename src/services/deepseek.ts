@@ -26,19 +26,16 @@ function getTodayDate(): string {
 }
 
 function buildPrompt(payload: BaziRequest): string {
-  const { name, gender, birthday, city, topic, question } = payload
+  const { gender, birthday, city } = payload
   const today = getTodayDate()
   return `
 你是一个专业的中国传统命理师，精通子平八字、十神、用神、大运流年等。
 现在请你根据下面的信息，进行严谨的八字命盘分析，并用温柔、疗愈、积极的口吻输出结果。
 
 - 今天的日期（分析流年、大运、未来运势请以此为准）：${today}
-- 姓名（可选）：${name || '未提供'}
-- 性别（可选）：${gender || '未提供'}
+- 性别：${gender || '未提供'}
 - 公历出生时间（精确到时辰，24 小时制）：${birthday}
-- 出生地（可选）：${city || '未提供'}
-- 想聊聊的主题（可选）：${topic || '未提供'}
-- 用户的具体困惑（可选）：${question || '未提供'}
+- 出生地：${city || '未提供'}
 
 要求：
 1. 先简要说明命局整体格局与性格气质，用 2-3 段话。

@@ -8,13 +8,10 @@ import { analyzeBaziWithDeepSeek } from '@/services/deepseek'
 export type Gender = 'male' | 'female' | ''
 
 export interface BaziFormState {
-  name: string
   gender: Gender
   birthDate: string // YYYY-MM-DD
   birthTime: string // HH:mm
   city: string // 出生地（省市区拼接）
-  topic: string
-  question: string
 }
 
 function toIsoDatetime(dateStr: string, timeStr: string) {
@@ -26,13 +23,10 @@ function toIsoDatetime(dateStr: string, timeStr: string) {
 
 export function useBaziAnalysis() {
   const form = ref<BaziFormState>({
-    name: '',
     gender: '',
     birthDate: '',
     birthTime: '',
     city: '',
-    topic: '未来 3 个月整体运势',
-    question: '',
   })
 
   const loading = ref(false)
@@ -74,12 +68,9 @@ export function useBaziAnalysis() {
     }
 
     const payload: BaziRequest = {
-      name: form.value.name.trim() || undefined,
       gender: form.value.gender || undefined,
       birthday: birthdayIso,
       city: form.value.city.trim() || undefined,
-      topic: form.value.topic.trim() || undefined,
-      question: form.value.question.trim() || undefined,
     }
 
     loading.value = true
